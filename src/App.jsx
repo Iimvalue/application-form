@@ -102,6 +102,8 @@ export default function App() {
   const handleSubmit = () => {
     if (validateForm()) {
       setShowModal(true);
+    } else {
+      scrollToTop();
     }
   };
 
@@ -125,6 +127,9 @@ export default function App() {
       question3: "",
     });
     setErrors({});
+    setTimeout(() => {
+      scrollToTop();
+    }, 500);
   };
 
   return (
@@ -247,7 +252,7 @@ export default function App() {
                         htmlFor={range.value}
                         className="ml-3 text-sm font-medium text-gray-700"
                       >
-                        {range.label+" "} 
+                        {range.label + " "}
                         <img
                           className="inline-block"
                           src="https://raw.githubusercontent.com/abdulrysrr/new-saudi-riyal-symbol/main/png/Saudi_Riyal_Symbol.png"
@@ -394,4 +399,12 @@ export default function App() {
       )}
     </div>
   );
+}
+
+// Basic version
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
